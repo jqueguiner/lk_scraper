@@ -1,0 +1,11 @@
+name: lk_scraper
+channels:
+  - conda-forge
+dependencies:
+  - python
+  - numpy
+  - pip
+  - pip:
+    - selenium
+    - PyYAML
+    - beautifulsoup4

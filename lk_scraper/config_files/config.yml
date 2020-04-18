@@ -1,0 +1,11 @@
+selenium:
+    protocol: "http"
+    host: localhost
+    port: 4444
+    browserName: "firefox"
+    javascriptEnabled: True
+linkedin:
+    cookies:
+        - name: "li_at"
+          value: "mon_super_cookie_linkedin"
+          domain: ".www.linkedin.com"
