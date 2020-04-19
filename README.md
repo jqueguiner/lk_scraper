@@ -25,7 +25,7 @@ After running this command, from the browser navigate to your IP address followe
 ### Browser-Independent:
     Navigate to Linkedin.com and log in
     Open up the browser developer tools (Ctrl-Shift-I or right click -> inspect element)
-    
+![https://www.nextscripts.com/images/sc/alt-LI-002-ch.png](https://www.nextscripts.com/images/sc/alt-LI-002-ch.png)
 ![https://i.stack.imgur.com/pVMyz.png](https://i.stack.imgur.com/pVMyz.png)
 
 ### Chrome:
