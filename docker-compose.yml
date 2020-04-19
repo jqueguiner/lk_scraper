@@ -1,14 +1,21 @@
 version: "3.2"
+networks:
+  lk_scraper-network:
+    driver: bridge
 services:
   selenium:
     image: selenium/standalone-firefox:3.141.59-20200326
     shm_size: 2G
     ports:
-    - 4444:4444
+      - 4444:4444
+    networks:
+      - lk_scraper-network
   lk_scraper:
     build: .
     stdin_open: true
     tty: true
+    networks:
+      - lk_scraper-network
     volumes:
       - type: bind
         source: ./config_files
