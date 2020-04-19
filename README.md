@@ -16,9 +16,8 @@ First, you need to run a selenium server
 docker run -d -p 4444:4444 --shm-size 2g selenium/standalone-firefox:3.141.59-20200326
 ```
 
-After running this command, from the browser navigate to the your IP address followed by the port number and /grid/console. So the command will be
-
-(http://ipaddress:4444/grid/console)[http://ipaddress:4444/grid/console]
+After running this command, from the browser navigate to your IP address followed by the port number and /grid/console. So the command will be
+[http://localhost:4444/grid/console](http://localhost:4444/grid/console).
 
 ## A full working example
 run the jupyter notebook linkedin-example.ipynb

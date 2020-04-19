@@ -1,3 +1,5 @@
+import hashlib
+
 from selenium import webdriver
 
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
@@ -6,15 +8,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 
-import random
-import time
 import re
-import sys
-import os
-import itertools
 import json
 
-from lk_scraper.Scraper.Driver import Driver
+from lk_scraper.scraper.driver import Driver
 from lk_scraper.config.config import ScraperConfig
 
 
@@ -25,7 +22,6 @@ class Scraper:
         self.rules = scraper_config.get_rules()
         self.config = scraper_config.get_config()
         self.driver = Driver(li_at)
-
 
     def extract_field(self, data, field='name') -> dict():
         out = ""
@@ -87,9 +83,9 @@ class Scraper:
             out[output_dict_key] = list()
 
         for code in code_snippets:
-           if 'com.linkedin.voyager' in code.text.strip():
+            if 'com.linkedin.voyager' in code.text.strip():
                 data = json.loads(code.text.strip())
-                
+
                 if 'included' in data:
                     data = data['included']
 
@@ -104,11 +100,11 @@ class Scraper:
                                         if field in sub_dataset:
                                             temp[field] = sub_dataset[field]
 
-
                                     if 'custom_fields' in rule:
                                         for k, field in rule['custom_fields'].items():
                                             try:
-                                                temp[k] = re.search(field['regex'], temp[field['field']], re.IGNORECASE).group(1)
+                                                temp[k] = re.search(field['regex'], temp[field['field']],
+                                                                    re.IGNORECASE).group(1)
                                             except:
                                                 pass
 
@@ -116,7 +112,6 @@ class Scraper:
                                         out[rule_key.rsplit('.', 1)[1]].append(temp)
                                     else:
                                         out[rule_key.rsplit('.', 1)[1]] = temp
-
 
                             if '$recipeTypes' in sub_dataset:
 
@@ -131,7 +126,8 @@ class Scraper:
                                         if 'custom_fields' in rule:
                                             for k, field in rule['custom_fields'].items():
                                                 try:
-                                                    temp[k] = re.search(field['regex'], temp[field['field']], re.IGNORECASE).group(1)
+                                                    temp[k] = re.search(field['regex'], temp[field['field']],
+                                                                        re.IGNORECASE).group(1)
                                                 except:
                                                     pass
 
@@ -140,10 +136,7 @@ class Scraper:
                                         else:
                                             out[rule_key.rsplit('.', 1)[1]] = temp
 
-
         return out
-
-
 
     def get_driver(self) -> webdriver:
         return self.driver
@@ -161,14 +154,14 @@ class Scraper:
         except:
             self.driver = Driver()
             self.driver.browse(url=url)
-        
+
         soup = self.driver.get_soup()
         return self.extract_from_json(soup, rules)
 
     def get_object(self, object_name='company', object_id='apple', full_url=""):
 
         object_rules = self.rules[object_name]
-        
+
         if not full_url == "":
             url = full_url
         else:
@@ -191,7 +184,7 @@ class Scraper:
                             index = int(index)
                         except:
                             pass
-                        
+
                         replacement = replacement[index]
 
                     url = url.replace('{%s}' % match, replacement)
@@ -208,7 +201,4 @@ class Scraper:
 
                 lk_object[key] = subsection_dict
 
-
-
         return lk_object
-
