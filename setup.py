@@ -16,7 +16,11 @@ src = os.path.join(os.getcwd(), SOURCE_PATH)
 for file_name in os.listdir(src):
     full_file_name = os.path.join(src, file_name)
     if os.path.isfile(full_file_name):
-        shutil.copy(full_file_name, TARGET_PATH)
+        target_full_file_name = os.path.join(TARGET_PATH, file_name)
+        if not os.path.isfile(target_full_file_name):
+            shutil.copy(full_file_name, target_full_file_name)
+        else:
+            print("config file %s already exists" % target_full_file_name)
 
 setup(name='lk_scraper',
       version='1.0',
