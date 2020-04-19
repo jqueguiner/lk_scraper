@@ -4,16 +4,22 @@ Scrapes Any Linkedin Data
 ## Installation
 
 ```bash
-pip install git+git://github.com/jqueguiner/lk_scraper
+$ pip install git+git://github.com/jqueguiner/lk_scraper
 ```
 
 
 ## Setup
+### Using Docker compose
+```bash
+$ docker-compose up -d
+$ docker-compose run lk_scraper python
+```
+
+### Locally
 First, you need to run a selenium server
 
-
 ```bash
-docker run -d -p 4444:4444 --shm-size 2g selenium/standalone-firefox:3.141.59-20200326
+$ docker run -d -p 4444:4444 --shm-size 2g selenium/standalone-firefox:3.141.59-20200326
 ```
 
 After running this command, from the browser navigate to your IP address followed by the port number and /grid/console. So the command will be
