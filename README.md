@@ -12,7 +12,7 @@ $ pip install git+git://github.com/jqueguiner/lk_scraper
 ### Using Docker compose
 ```bash
 $ docker-compose up -d
-$ docker-compose run lk_scraper python
+$ docker-compose run lk_scraper python3
 ```
 
 ### Using Docker only for selenium server
