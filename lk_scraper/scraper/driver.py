@@ -12,10 +12,10 @@ import random
 import time
 import re
 import sys
-import os
 import itertools
 
 from lk_scraper.config.config import ScraperConfig
+
 
 class Driver:
     def __init__(self, li_at_cookie=""):
@@ -26,14 +26,15 @@ class Driver:
             print("Driver loaded")
             if self.add_coookies(li_at_cookie=""):
                 print("Cookies loaded")
-            
+
     def build_driver(self):
         config = self.config['selenium']
-        
+
         try:
             driver = webdriver.Remote(
-               command_executor='%s://%s:%d/wd/hub' % (config['protocol'], config['host'], config['port']),
-               desired_capabilities={'browserName': config['browserName'], 'javascriptEnabled': config['javascriptEnabled']})
+                command_executor='%s://%s:%d/wd/hub' % (config['protocol'], config['host'], config['port']),
+                desired_capabilities={'browserName': config['browserName'],
+                                      'javascriptEnabled': config['javascriptEnabled']})
             self.driver = driver
             return driver
 
@@ -47,7 +48,7 @@ class Driver:
 
     def add_coookies(self, li_at_cookie="") -> bool:
         config = self.config['linkedin']
-        
+
         try:
             for cookie in config['cookies']:
                 regex = r"([a-z].*\.[a-z].*)"
@@ -56,14 +57,14 @@ class Driver:
                     'name': cookie['name'],
                     'value': cookie['value'],
                     'domain': cookie['domain']
-                    })
+                })
 
             if not li_at_cookie == "":
                 self.driver.add_cookie({
                     'name': 'li_at',
                     'value': li_at_cookie,
                     'domain': '.www.linkedin.com'
-                    })
+                })
 
             return True
 
@@ -78,11 +79,10 @@ class Driver:
     def browse(self, url) -> webdriver:
         self.driver.get(url)
         WebDriverWait(self.driver, 1).until(EC.presence_of_element_located((By.ID, "profile-nav-item")))
-        
+
         for _ in itertools.repeat(None, 3):
             self.scroll_down()
-            time.sleep(random.randrange(30, 100, 1)/100)
-
+            time.sleep(random.randrange(30, 100, 1) / 100)
 
     def get_page_source(self) -> str:
         source = self.driver.page_source
@@ -132,11 +132,9 @@ class Driver:
                 "window.scrollTo(0, Math.min({}, document.body.scrollHeight));".format(new_height))
             current_height = new_height
             # Wait to load page
-            scroll_pause = random.randrange(0, 30, 1)/1000
+            scroll_pause = random.randrange(0, 30, 1) / 1000
             time.sleep(scroll_pause)
 
-        
     def click(self, xpath='//*[@id="ember419"]'):
         python_button = self.driver.find_elements_by_xpath(xpath)[0]
         python_button.click()
-

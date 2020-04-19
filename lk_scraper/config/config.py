@@ -1,6 +1,6 @@
 # Use of this source code is governed by a BSD-style
 # license that can be found in the LICENSE file.
-# Copyright 2020 The lk_scrapper Authors. All rights reserved.
+# Copyright 2020 The lk_scraper Authors. All rights reserved.
 
 import json
 import os
@@ -36,11 +36,10 @@ class ScraperConfig(object):
         self.config = dict()
         self.selenium = dict()
         self.linkedin = dict()
-        
+
         self.rules = dict()
 
         self.rules, self.config = self.load()
-
 
     def load(self) -> 'ScraperConfig':
         """
@@ -50,19 +49,16 @@ class ScraperConfig(object):
         ScraperConfig.create_config_path_if_not_exist(config_path=self.config_path)
 
         if os.path.isfile(self.full_config_path):
-            
             print('Loading configuration file %s' % self.full_config_path)
             with open(self.full_config_path, 'r') as f:
                 self.config = yaml.load(f, Loader=yaml.FullLoader)
 
             self.selenium = self.config['selenium']
             self.linkedin = self.config['linkedin']
-            
-            
+
             print('Loading rules file %s' % self.full_rules_path)
             with open(self.full_rules_path, 'r') as f:
                 self.rules = json.load(f)
-
 
         return self.rules, self.config
 
