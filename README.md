@@ -15,7 +15,7 @@ $ docker-compose up -d
 $ docker-compose run lk_scraper python
 ```
 
-### Locally
+### Using Docker only for selenium server
 First, you need to run a selenium server
 
 ```bash
