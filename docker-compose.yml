@@ -1,0 +1,15 @@
+version: "3.2"
+services:
+  selenium:
+    image: selenium/standalone-firefox:3.141.59-20200326
+    shm_size: 2G
+    ports:
+    - 4444:4444
+  lk_scraper:
+    build: .
+    stdin_open: true
+    tty: true
+    volumes:
+      - type: bind
+        source: ./config_files
+        target: /root/.lk_scraper
