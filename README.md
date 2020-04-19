@@ -1,5 +1,6 @@
 # Linkedin Scraper
 Scrapes Any Linkedin Data
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jqueguiner/lk_scraper/master)
 
 ## Installation
 
@@ -32,7 +33,7 @@ scraper = Scraper()
 ```
 You can add your linkedin li_at cookie in the config file that is located in your home (~/.lk_scraper/config.yml)
 see
-[https://github.com/jqueguiner/lk_scraper/raw/master/config_yaml.png!](https://github.com/jqueguiner/lk_scraper/raw/master/config_yaml.png)
+![https://github.com/jqueguiner/lk_scraper/raw/master/config_yaml.png](https://github.com/jqueguiner/lk_scraper/raw/master/config_yaml.png)
 
 ### Company Scraping
 
