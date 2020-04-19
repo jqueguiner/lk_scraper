@@ -1,6 +1,6 @@
 selenium:
     protocol: "http"
-    host: selenium
+    host: "selenium"
     port: 4444
     browserName: "firefox"
     javascriptEnabled: True
