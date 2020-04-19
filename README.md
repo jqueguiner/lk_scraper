@@ -1,6 +1,5 @@
 # Linkedin Scraper
 Scrapes Any Linkedin Data
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jqueguiner/lk_scraper/master)
 
 ## Installation
 
