@@ -46,6 +46,25 @@ After running this command, from the browser navigate to your IP address followe
 
 
 
+## Setting up the cookie
+### Method 1 : Setting the cookie in the config file
+You can add your linkedin li_at cookie in the config file that is located in your home (~/.lk_scraper/config.yml)
+see
+![https://github.com/jqueguiner/lk_scraper/raw/master/config_yaml.png](https://github.com/jqueguiner/lk_scraper/raw/master/config_yaml.png)
+
+## Method 2 : Setting the cookie at the Scraper level
+```python
+from lk_scraper import Scraper
+li_at = "My_super_linkedin_cookie"
+scraper = Scraper(li_at=li_at)
+```
+
+## Method 3 : Using Variable Environment
+(Not implemented Yet)
+```bash
+$ export LI_AT="My_super_linkedin_cookie"
+```
+
 ## A full working example
 run the jupyter notebook linkedin-example.ipynb
 
@@ -56,9 +75,6 @@ run the jupyter notebook linkedin-example.ipynb
 from lk_scraper import Scraper
 scraper = Scraper()
 ```
-You can add your linkedin li_at cookie in the config file that is located in your home (~/.lk_scraper/config.yml)
-see
-![https://github.com/jqueguiner/lk_scraper/raw/master/config_yaml.png](https://github.com/jqueguiner/lk_scraper/raw/master/config_yaml.png)
 
 ### Company Scraping
 
