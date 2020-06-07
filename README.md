@@ -1,5 +1,5 @@
-# Linkedin Scraper
-Scrapes Any Linkedin Data
+# LinkedIn Scraper
+Scrapes Any LinkedIn Data
 
 ## Installation
 
@@ -15,8 +15,8 @@ $ docker-compose up -d
 $ docker-compose run lk_scraper python3
 ```
 
-### Using Docker only for selenium server
-First, you need to run a selenium server
+### Using Docker only for Selenium server
+First, you need to run a Selenium server
 
 ```bash
 $ docker run -d -p 4444:4444 --shm-size 2g selenium/standalone-firefox:3.141.59-20200326
@@ -29,7 +29,7 @@ After running this command, from the browser navigate to your IP address followe
 ## Retrieving Cookie
 
 ### Browser-Independent:
-    Navigate to Linkedin.com and log in
+    Navigate to LinkedIn.com and log in
     Open up the browser developer tools (Ctrl-Shift-I or right click -> inspect element)
 ![https://www.nextscripts.com/images/sc/alt-LI-002-ch.png](https://www.nextscripts.com/images/sc/alt-LI-002-ch.png)
 ![https://i.stack.imgur.com/pVMyz.png](https://i.stack.imgur.com/pVMyz.png)
@@ -48,7 +48,7 @@ After running this command, from the browser navigate to your IP address followe
 
 ## Setting up the cookie
 ### Method 1 : Setting the cookie in the config file
-You can add your linkedin li_at cookie in the config file that is located in your home (~/.lk_scraper/config.yml)
+You can add your LinkedIn li_at cookie in the config file that is located in your home (~/.lk_scraper/config.yml)
 see
 ![https://github.com/jqueguiner/lk_scraper/raw/master/config_yaml.png](https://github.com/jqueguiner/lk_scraper/raw/master/config_yaml.png)
 
@@ -66,7 +66,7 @@ $ export LI_AT="My_super_linkedin_cookie"
 ```
 
 ## A full working example
-run the jupyter notebook linkedin-example.ipynb
+Run the Jupyter notebook linkedin-example.ipynb
 
 
 ## Usage
